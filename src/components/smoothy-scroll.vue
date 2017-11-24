@@ -19,7 +19,7 @@ export default {
     	scrollNow: 0,
     	scrollNew: 0,
     	skewing: 0,
-    	maxSkew: 3.5,
+    	maxSkew: 3,
     	skewBackSpeed: 0,
     	isScrolling: false,
     	items: [
@@ -57,15 +57,14 @@ export default {
   	handleScroll(e) {
   		clearTimeout(this.isScrolling)
   		this.skewBackSpeed = 0
-  		const skewLevel = this.scrollNew - this.scrollNow
   		this.scrollNow = this.scrollNew
   		this.scrollNew = e.target.scrollTop
   		this.scrollNew > this.scrollNow ? 
   			window.requestAnimationFrame(this.toSkewingDown) : window.requestAnimationFrame(this.toSkewingUp)
   		this.isScrolling = setTimeout(()=>{
-  			this.skewBackSpeed = 1000
+  			this.skewBackSpeed = 888
   			this.skewing = 0
-  		}, 133)
+  		}, 50)
   	},
   	toSkewingDown() {
   		if(this.skewing < this.maxSkew){
